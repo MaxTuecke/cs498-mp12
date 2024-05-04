@@ -4,14 +4,17 @@ metadata:
   generateName: premium-job-
   namespace: default
 spec:
-  containers:
-  - name: premium-job-container
-    image: maxtuecke/cs498-mp12
-    resources:
-      limits:
-        cpu: 0.9
-    env:
-    - name: DATASET
-      value: "kmnist"
-    - name: TYPE
-      value: "cnn"
+  template:
+    spec:
+      containers:
+      - name: premium-job-container
+        image: maxtuecke/cs498-mp12:latest
+        resources:
+          limits:
+            cpu: 0.9
+        env:
+        - name: DATASET
+          value: "kmnist"
+        - name: TYPE
+          value: "cnn"
+      restartPolicy: Never
