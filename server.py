@@ -46,6 +46,7 @@ def post_free():
         #api_response = v1.create_namespaced_job(NAMESPACE, body)
         api_response = api_instance.create_namespaced_job(NAMESPACE, job)
     except Exception as e:
+        print(e)
         return Response("{'status':'failed'}", status=400, mimetype='application/json')
 
     if api_response.status.failed is None or api_response.status.failed > 0:
@@ -68,6 +69,7 @@ def post_premium():
         #api_response = v1.create_namespaced_job(NAMESPACE, body)
         api_response = api_instance.create_namespaced_job(NAMESPACE, job)
     except Exception as e:
+        print(e)
         return Response("{'status':'failed'}", status=400, mimetype='application/json')
 
     return Response("{'status':'success'}", status=200, mimetype='application/json')

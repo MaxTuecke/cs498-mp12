@@ -14,6 +14,6 @@ print(x.text)
 
 time.sleep(3)
 
-x = requests.post(url_config, json = b)
+x = requests.get(url_config)
 print(x.text)
 
