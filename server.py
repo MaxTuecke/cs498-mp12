@@ -20,6 +20,8 @@ app = Flask(__name__)
 
 @app.route('/config', methods=['GET'])
 def get_config():
+    print("RECIVED CONFIG REQUEST")
+
     output = {"pods": []}
 
     pods = v1.list_pod_for_all_namespaces(watch=False)
@@ -32,6 +34,8 @@ def get_config():
 
 @app.route('/img-classification/free',methods=['POST'])
 def post_free():
+    print("RECIVED FREE REQUEST")
+
     #ENV_VARS = {"DATASET" : "mnist", "TYPE" : "ff"}
     NAMESPACE = "free-service"
 
@@ -52,6 +56,8 @@ def post_free():
 
 @app.route('/img-classification/premium', methods=['POST'])
 def post_premium():
+    print("RECIVED PREMIUM REQUEST")
+
     #ENV_VARS = {"DATASET" : "kmnist", "TYPE" : "cnn"}
     NAMESPACE = "default"
 
