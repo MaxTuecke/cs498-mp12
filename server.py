@@ -48,7 +48,7 @@ def post_free():
     except Exception as e:
         return Response("{'status':'failed'}", status=400, mimetype='application/json')
 
-    if api_response.status.failed > 0:
+    if api_response.status.failed is None or api_response.status.failed > 0:
         return Response("{'status':'failed'}", status=400, mimetype='application/json')
     else:
         return Response("{'status':'success'}", status=200, mimetype='application/json')
@@ -70,10 +70,8 @@ def post_premium():
     except Exception as e:
         return Response("{'status':'failed'}", status=400, mimetype='application/json')
 
-    if api_response.status.failed > 0:
-        return Response("{'status':'failed'}", status=400, mimetype='application/json')
-    else:
-        return Response("{'status':'success'}", status=200, mimetype='application/json')
+    return Response("{'status':'success'}", status=200, mimetype='application/json')
+        
 
     
 if __name__ == "__main__":
