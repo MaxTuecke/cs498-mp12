@@ -25,12 +25,12 @@ def get_config():
     output = {"pods": []}
 
     pods = v1.list_pod_for_all_namespaces(watch=False)
-    for item in pod.items:
+    for item in pods.items:
         p = {"node" : item.spec.node_name, "ip" : item.status.pod_ip, "namespace" : item.metadata.namespace, "name" : item.metadata.name, "status" : item.status.phase}
         output["pods"].append(p)
 
     output = json.dumps(output)
-    return output
+    return Response(output, status=200, mimetype='application/json')
 
 @app.route('/img-classification/free',methods=['POST'])
 def post_free():
@@ -47,11 +47,14 @@ def post_free():
         api_response = api_instance.create_namespaced_job(NAMESPACE, job)
     except Exception as e:
         print(e)
+        print("FREE STATUS: FAILED")
         return Response("{'status':'failed'}", status=400, mimetype='application/json')
 
     if api_response.status.failed is None or api_response.status.failed > 0:
+        print("FREE STATUS: FAILED")
         return Response("{'status':'failed'}", status=400, mimetype='application/json')
     else:
+        print("FREE STATUS: SUCCESS")
         return Response("{'status':'success'}", status=200, mimetype='application/json')
 
 
