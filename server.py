@@ -47,10 +47,10 @@ def post_free():
         api_response = api_instance.create_namespaced_job(NAMESPACE, job)
     except Exception as e:
         print(e)
-        print("FREE STATUS: FAILED")
+        print("FREE STATUS: FAILED WITH EXCEPTION")
         return Response("{'status':'failed'}", status=400, mimetype='application/json')
 
-    if api_response.status.failed is None or api_response.status.failed > 0:
+    if api_response.status.failed is not None and api_response.status.failed > 0:
         print("FREE STATUS: FAILED")
         return Response("{'status':'failed'}", status=400, mimetype='application/json')
     else:
