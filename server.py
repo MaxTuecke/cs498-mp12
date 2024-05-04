@@ -6,10 +6,10 @@ import sys
 import json
 
 # Configs can be set in Configuration class directly or using helper utility
-KUB_CONFIG = ""
+KUB_CONFIG = "/home/ec2-user/.kube/config"
 IMAGE_ID = "maxtuecke/cs498-mp12"
-FREE_JOB_YAML = ""
-PREMIUM_JOB_YAML = ""
+FREE_JOB_YAML = "./free_job_spec.yaml"
+PREMIUM_JOB_YAML = "./premium_job_spec.yaml"
 
 config.load_kube_config(KUB_CONFIG)
 v1 = client.CoreV1Api()

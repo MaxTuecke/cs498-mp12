@@ -2,6 +2,7 @@ apiVersion: v1
 kind: Job
 metadata:
   generateName: premium-job-
+  namespace: default
 spec:
   containers:
   - name: premium-job-container

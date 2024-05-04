@@ -2,6 +2,7 @@ apiVersion: v1
 kind: Job
 metadata:
   generateName: free-job-
+  namespace: free-service
 spec:
   containers:
   - name: free-job-container
