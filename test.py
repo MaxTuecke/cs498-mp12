@@ -9,14 +9,11 @@ KUB_CONFIG = "/home/ec2-user/.kube/config"
 IMAGE_ID = "maxtuecke/cs498-mp12"
 FREE_JOB_YAML = "./free_job_spec.yaml"
 PREMIUM_JOB_YAML = "./premium_job_spec.yaml"
+NAMESPACE = "free-service"
 
 config.load_kube_config(KUB_CONFIG)
 v1 = client.CoreV1Api()
 # app.run(debug = True)
-
-
-print(v1.list_node())
-
 api_instance = client.BatchV1Api()
 
 job = yaml.safe_load(open(FREE_JOB_YAML))
