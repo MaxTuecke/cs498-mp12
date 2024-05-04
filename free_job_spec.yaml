@@ -4,15 +4,16 @@ metadata:
   generateName: free-job-
   namespace: free-service
 spec:
-  containers:
-  - name: free-job-container
-    image: maxtuecke/cs498-mp12
-      imagePullPolicy: IfNotPresent
-    resources:
-      limits:
-        cpu: 0.9
-    env:
-    - name: DATASET
-      value: "mnist"
-    - name: TYPE
-      value: "ff"
+  template:
+    spec:
+      containers:
+      - name: free-job-container
+        image: maxtuecke/cs498-mp12:latest
+        resources:
+          limits:
+            cpu: 0.9
+        env:
+        - name: DATASET
+          value: "mnist"
+        - name: TYPE
+          value: "ff"
