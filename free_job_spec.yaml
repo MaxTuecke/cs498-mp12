@@ -17,3 +17,4 @@ spec:
           value: "mnist"
         - name: TYPE
           value: "ff"
+      restartPolicy: Never
