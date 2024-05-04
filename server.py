@@ -24,7 +24,7 @@ def get_config():
 
     pods = v1.list_pod_for_all_namespaces(watch=False)
     for item in pod.items:
-        p = {"node" : item.spec.node_name: , "ip" : item.status.pod_ip, "namespace" : item.metadata.namespace, "name" : item.metadata.name, "status" : item.status.phase}
+        p = {"node" : item.spec.node_name, "ip" : item.status.pod_ip, "namespace" : item.metadata.namespace, "name" : item.metadata.name, "status" : item.status.phase}
         output["pods"].append(p)
 
     output = json.dumps(output)
