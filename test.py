@@ -14,8 +14,13 @@ config.load_kube_config(KUB_CONFIG)
 v1 = client.CoreV1Api()
 # app.run(debug = True)
 
+
+print(v1.list_node())
+
+api_instance = client.BatchV1Api()
+
 job = yaml.safe_load(open(FREE_JOB_YAML))
-api_response = v1.create_namespaced_job(NAMESPACE, job)
+api_response = api_instance.create_namespaced_job(NAMESPACE, job)
 print(api_response)
 print(api_response.__dict__)
 
