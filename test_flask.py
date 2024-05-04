@@ -4,9 +4,9 @@ import time
 b = {'k': 'v'}
 
 
-url_free = 'localhost:5000/img-classification/free'
-url_premium = 'localhost:5000/img-classification/premium'
-url_config = 'localhost:5000/config'
+url_free = '54.160.65.50:5000/img-classification/free'
+url_premium = '54.160.65.50:5000/img-classification/premium'
+url_config = '54.160.65.50:5000/config'
 
 
 x = requests.post(url_free, json = myobj)
